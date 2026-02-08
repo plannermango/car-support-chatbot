@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>현대자동차 고객 상담 AI 챗봇</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚗 현대자동차 고객 상담</h1>
+            <p class="subtitle">24시간 AI 긴급 상담 서비스</p>
+        </div>
+
+        <div class="chat-container" id="chatContainer">
+            <div class="message bot-message">
+                <div class="message-content">
+                    <strong>상담원 AI</strong>
+                    <p>안녕하세요, 현대자동차 긴급 상담 서비스입니다. 무엇을 도와드릴까요?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-container">
+            <input
+                type="text"
+                id="userInput"
+                placeholder="메시지를 입력하세요..."
+                autocomplete="off"
+            />
+            <button id="sendButton">전송</button>
+        </div>
+
+        <div class="quick-actions">
+            <button class="quick-btn" data-message="계기판에 빨간 경고등이 켜졌어요! 급해요!">🚨 긴급 상황</button>
+            <button class="quick-btn" data-message="계기판 경고등이 뭔지 모르겠어요">❓ 경고등 문의</button>
+            <button class="quick-btn" data-message="차량 점검 예약하고 싶어요">📅 점검 예약</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
