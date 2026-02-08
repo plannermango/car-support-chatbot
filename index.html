@@ -3,21 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>현대자동차 고객 상담 AI 챗봇</title>
+    <title>현대자동차 고객 상담 센터</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🚗 현대자동차 고객 상담</h1>
-            <p class="subtitle">24시간 AI 긴급 상담 서비스</p>
+            <div class="header-top">
+                <div class="brand-logo">
+                    <div class="logo-box">H</div>
+                    <div class="brand-text">
+                        <h1>HYUNDAI</h1>
+                        <p class="header-subtitle">고객 상담 센터</p>
+                    </div>
+                </div>
+                <div class="cert-badge">
+                    <span class="cert-icon">✓</span>
+                    <span class="cert-text">공식 인증</span>
+                </div>
+            </div>
+            <div class="header-info">
+                <div class="info-item">
+                    <span class="info-icon">📞</span>
+                    <span>1588-5000</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🕐</span>
+                    <span>24시간 운영</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🔒</span>
+                    <span>보안 연결</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="advisor-profile">
+            <div class="advisor-avatar">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="20" fill="#002c5f"/>
+                    <path d="M20 20c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM20 22c-4.418 0-8 2.686-8 6v2h16v-2c0-3.314-3.582-6-8-6z" fill="#fff"/>
+                </svg>
+            </div>
+            <div class="advisor-info">
+                <div class="advisor-name">김서연 수석 기술 상담사</div>
+                <div class="advisor-credentials">
+                    <span class="credential-badge">자동차정비기능장</span>
+                    <span class="credential-badge">경력 15년</span>
+                    <span class="advisor-status">
+                        <span class="status-dot"></span>
+                        상담 가능
+                    </span>
+                </div>
+            </div>
         </div>
 
         <div class="chat-container" id="chatContainer">
             <div class="message bot-message">
+                <div class="message-avatar">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="16" fill="#002c5f"/>
+                        <path d="M16 16c2.651 0 4.8-2.149 4.8-4.8S18.651 6.4 16 6.4s-4.8 2.149-4.8 4.8S13.349 16 16 16zM16 17.6c-3.534 0-6.4 2.149-6.4 4.8v1.6h12.8v-1.6c0-2.651-2.866-4.8-6.4-4.8z" fill="#fff"/>
+                    </svg>
+                </div>
                 <div class="message-content">
-                    <strong>상담원 AI</strong>
-                    <p>안녕하세요, 현대자동차 긴급 상담 서비스입니다. 무엇을 도와드릴까요?</p>
+                    <div class="message-header">
+                        <strong>김서연 상담사</strong>
+                        <span class="message-time" id="initialTime"></span>
+                    </div>
+                    <p>안녕하세요, 고객님. 현대자동차 고객상담센터 김서연 기술 상담사입니다.</p>
+                    <p>차량에 어떤 문제가 발생하셨는지 자세히 말씀해 주시겠습니까? 정확한 진단을 통해 최선의 해결 방안을 안내해 드리겠습니다.</p>
                 </div>
             </div>
         </div>
@@ -26,16 +84,34 @@
             <input
                 type="text"
                 id="userInput"
-                placeholder="메시지를 입력하세요..."
+                placeholder="증상을 구체적으로 설명해 주세요..."
                 autocomplete="off"
             />
-            <button id="sendButton">전송</button>
+            <button id="sendButton">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M2 10L18 2L10 18L8 11L2 10Z" fill="currentColor"/>
+                </svg>
+            </button>
         </div>
 
         <div class="quick-actions">
-            <button class="quick-btn" data-message="계기판에 빨간 경고등이 켜졌어요! 급해요!">🚨 긴급 상황</button>
-            <button class="quick-btn" data-message="계기판 경고등이 뭔지 모르겠어요">❓ 경고등 문의</button>
-            <button class="quick-btn" data-message="차량 점검 예약하고 싶어요">📅 점검 예약</button>
+            <div class="quick-label">자주 묻는 문의</div>
+            <button class="quick-btn urgent" data-message="주행 중 계기판에 빨간색 경고등이 갑자기 켜졌습니다. 매우 급합니다.">
+                <span class="btn-icon">⚠️</span>
+                <span class="btn-text">긴급 경고등</span>
+            </button>
+            <button class="quick-btn" data-message="계기판에 경고등이 켜졌는데 정확히 어떤 표시인지 모르겠어요.">
+                <span class="btn-icon">❓</span>
+                <span class="btn-text">경고등 확인</span>
+            </button>
+            <button class="quick-btn" data-message="서비스 센터 예약을 하고 싶습니다.">
+                <span class="btn-icon">📅</span>
+                <span class="btn-text">예약 문의</span>
+            </button>
+        </div>
+
+        <div class="disclaimer">
+            <p>본 상담은 AI 기반 기술 지원 서비스입니다. 정확한 진단은 서비스센터 방문을 권장드립니다.</p>
         </div>
     </div>
 
